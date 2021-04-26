@@ -1,0 +1,15 @@
+using System;
+using System.Text;
+public class Kata
+{
+    public static string Switcher(string[] x)
+    {
+          StringBuilder sb = new StringBuilder();
+            char[] ralpha = "zyxwvutsrqponmlkjihgfedcba!? ".ToCharArray();
+            for (int i = 0; i < x.Length; i++)
+            {
+                sb.Append(ralpha[int.Parse(x[i])-1]);
+            }
+            return sb.ToString();
+    }
+}
