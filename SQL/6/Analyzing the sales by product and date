@@ -1,0 +1,9 @@
+SELECT pr.name AS product_name,
+EXTRACT(YEAR FROM s.date)::int AS year,
+EXTRACT(MONTH FROM s.date)::int AS month,
+EXTRACT(DAY FROM s.date)::int AS day,
+SUM(pr.price * sd.count) AS total
+FROM sales_details sd
+JOIN products pr ON pr.id = sd.product_id
+JOIN sales s ON sd.sale_id = s.id
+GROUP BY name,ROLLUP(year,month,day)
