@@ -1,0 +1,8 @@
+SELECT products.name,
+SUM((details.detail = 'good')::int) AS good,
+SUM((details.detail = 'ok')::int) AS ok,
+SUM((details.detail = 'bad')::int) AS bad
+FROM details, products
+WHERE details.product_id = products.id
+GROUP BY name
+ORDER BY name
